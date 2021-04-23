@@ -71,12 +71,8 @@ public class OpenDoorTwo : MonoBehaviour
 
 
         }
-        //else
-        //{
-        //    spring.targetPosition = restPosition;
 
-        //}
         hinge.spring = spring;
-        ////hinge.useLimits = true;
+
     }
 }

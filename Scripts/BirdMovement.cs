@@ -19,22 +19,7 @@ public class BirdMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //if (Input.GetKey(KeyCode.UpArrow))
-        //{
-        //    if (isGrounded)
-        //    {
-        //        body.velocity = new Vector3(body.velocity.x, jumpSpeed, body.velocity.z);
-        //        isGrounded = false;
-        //    }
-        //}
-        //if (Input.GetKey(KeyCode.LeftArrow))
-        //{
-        //    body.velocity = new Vector3(body.velocity.x, body.velocity.y, -WalkSpeed);
-        //}
-        //if (Input.GetKey(KeyCode.RightArrow))
-        //{
-        //    body.velocity = new Vector3(body.velocity.x, body.velocity.y, WalkSpeed);
-        //}
+
         body.velocity = new Vector3(0, body.velocity.y, Input.GetAxis("Horizontal") * WalkSpeed);
         
         if (Input.GetAxis("Horizontal") > 0)
@@ -73,9 +58,9 @@ public class BirdMovement : MonoBehaviour
 
         if (other.gameObject.tag == "tent")
         {
-            //  body.freezeRotation = false;
+
             transform.position = spawnPos.position;
-            //  body.constraints = RigidbodyConstraints.FreezeRotationY;
+
             isGrounded = false;
             numJumps = 0;
         }

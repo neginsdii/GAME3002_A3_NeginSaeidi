@@ -24,11 +24,7 @@ public class CoilSpring : MonoBehaviour
     {
         m_fMass = m_attachedBody.mass;
 
-        // If you want to test the CoilSpring, or Bridge scenes...
-        // ...remember to remove the comment for CALC_SPRING_COEFF
-#if CALC_SPRING_COEFF
-        m_fSpringConstant = CalculateSpringConstant();
-#endif
+      
     }
 
     private void FixedUpdate()
@@ -38,9 +34,6 @@ public class CoilSpring : MonoBehaviour
 
     private float CalculateSpringConstant()
     {
-        // k = F / dX
-        // F = m * a
-        // k = m * a / (xf - xi)
 
         float fDX = (m_vRestPos - m_attachedBody.transform.position).magnitude;
 
@@ -54,18 +47,7 @@ public class CoilSpring : MonoBehaviour
 
     private void UpdateSpringForce()
     {
-        // F = -kx
-        // F = -kx -bv
 
-        if (m_bIsBungee)
-        {
-            float fLen = (m_vRestPos - m_attachedBody.transform.position).magnitude;
-
-            if (fLen <= m_vRestPos.y)
-            {
-                return;
-            }
-        }
 
         m_vForce = -m_fSpringConstant * (m_vRestPos - m_attachedBody.transform.position) -
             m_fDampingConstant * (m_attachedBody.velocity - m_vPrevVel);
